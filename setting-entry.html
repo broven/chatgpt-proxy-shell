@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+      <style>
+    /* 样式可以自定义 */
+    button {
+      width: 100%;
+      height: 100%;
+      background-color: #007bff;
+      color: white;
+      font-size: 16px;
+    }
+  </style>
+  </head>
+  <body>
+    <button id="openSettingBtn">Settings</button>
+<script>
+    const { ipcRenderer } = require('electron')
+
+    // 监听按钮点击事件，向主进程发送自定义事件
+    document.getElementById('openSettingBtn').addEventListener('click', () => {
+      // not working
+      ipcRenderer.send('openSettingWindow')
+    })
+  </script>
+
+  </body>
+</html>
